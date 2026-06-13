@@ -1,13 +1,3 @@
 # F+
 
-This DSL is made in C and is stack based. If you choose the open source version you must have GCC to compile it and you will be able to see all the code. If you choose the compiled version you can use the Windows executable (x86-64) to run the programs made on this DSL. 
-Example of use:  
-1,15,
-1,16,
-3, 
-8,
-1,17,
-4,
-8,
-9
-
+This is the first version of F+. You chose the open source version, so you need GCC to compile it.
