@@ -67,12 +67,16 @@ void compile_file() {
             if (fscanf(input, "%d,", &value) == 1) {
                 fprintf(output, "12,%d,\n", value); 
             }
-        } else if (strcmp(ptr, "PRINT_RAM") == 0) { 
+        } else if (strcmp(ptr, "LOAD") == 0) { 
             if (fscanf(input, "%d,", &value) == 1) {
                 fprintf(output, "13,%d,\n", value); 
             }
-        }
-		else if (strcmp(ptr, "RESET") == 0) { fprintf(output, "14,\n"); }
+        } else if (strcmp(ptr, "PRINT_RAM") == 0) { 
+            if (fscanf(input, "%d,", &value) == 1) {
+                fprintf(output, "14,%d,\n", value); 
+            }
+        } 
+		else if (strcmp(ptr, "RESET") == 0) { fprintf(output, "15,\n"); }
         else {
             printf("Error: Unknown instruction '%s' in text file\n", ptr);
             fclose(input);
@@ -223,11 +227,20 @@ void execute_file() {
 				ip += 2;
 				sp--;
 				break;
-			case 13: // PRINT_RAM
+			case 13: // LOAD
+				if (sp >= MAX_STACK) {
+					printf("Error: Stack overflow\n"); 
+                    return; 
+				}
+				stack[sp] = ram[program[ip+1]];
+				ip += 2;
+				sp++;
+				break;
+			case 14: // PRINT_RAM
 				printf("%d\n", ram[program[ip+1]]);
 				ip += 2;
 				break;
-			case 14: // RESET
+			case 15: // RESET
 				ip = 0;
 				break;
             default:
