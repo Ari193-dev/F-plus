@@ -35,4 +35,4 @@ void fetch_execute();
 void decode();
 void execute();
 
-#endif   
+#endif
