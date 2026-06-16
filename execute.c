@@ -6,7 +6,6 @@
 void execute() {
     while (1) {
         opcode = program[ip];
-        
         switch (opcode) {
             case 0x01: // PUSH
                 if (sp >= MAX_STACK) {
