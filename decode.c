@@ -151,4 +151,4 @@ void decode() {
     fclose(input);
     fclose(output);
     printf("%s created\n", new_file);
-}
+} 
